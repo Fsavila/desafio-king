@@ -1,0 +1,5 @@
+- name: Iniciando Nginx
+  become: true
+  shell: 
+    cmd: systemctl start nginx && systemctl enable nginx
+    executable: /bin/sh

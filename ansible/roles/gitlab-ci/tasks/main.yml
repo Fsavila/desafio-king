@@ -1,0 +1,24 @@
+  stages:
+  - build
+  - test
+  - deploy
+
+  build:
+    stage: build
+    script:
+        - mv ../ansible/hosts ../ansible/hosts_old
+        - echo "[webserves]" >> ../ansible/hosts
+        - chmod +x install_requirements.sh
+        - ./install_requirements.sh
+
+  test:
+    stage: test
+    script:
+        - chmod +x validate_requirements.sh
+        - ./validate_requirements.sh
+
+  deploy:
+    stage: deploy
+    script:
+        - chmod +x start.sh
+        - ./start.sh

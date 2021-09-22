@@ -10,6 +10,8 @@ Separei cada arquivo para que ficasse de melhor entendimento durante o processo.
 
 Foram utilizados servidores com 2 nucleos de CPU e 8Gb de ram para atender a demanda dos dockers.
 
+OBS: Se atente aos comentários dos arquivos, em cada um deles existem explicações claras sobre o que cada parte faz e porque foram utilizadas daquela maneira.
+
 
 ## Quais ferramentas foram utlizadas e porque o uso destas?
 

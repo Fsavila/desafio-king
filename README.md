@@ -54,7 +54,7 @@ OBS: Se atente aos comentários dos arquivos, em cada um deles existem explicaç
  6) ![image](https://user-images.githubusercontent.com/54381653/134230044-1e9b6c53-490a-462d-af01-97ea93adf9ce.png) OBS: Essas infomações já não existem mais.
  7) Com estes dados será necessário cadastrar o Runner para que o gitlab execute os scripts no novo ambiente.
  8) No arquivo gitlab-runner.yml troque as informações como URL e registration token que estão destacadas com os nomes $URL E $TOKENREG. --url --clone-url --registration-token
- 9) **Pronto agora pode clicar em qualquer tecla que ele vai terminar de depoylar por completo. A estrutura nesse momento se encontra toda pronta.
+ 9) **Pronto agora pode clicar em qualquer tecla que ele vai terminar de depoylar por completo. A estrutura nesse momento se encontra toda pronta.**
  10) Para finalizar o Projeto agora iremos copiar o nosso arquivo gitlab-ci.yml la no editor de criação de pipeline do CI/CD feito isso basta dar run na pipeline e se tudo der certo ele irá refazer um novo deploy na estrutura.
  OBS:![image](https://user-images.githubusercontent.com/54381653/134264897-cf36b2b1-9a3b-41bb-9545-c0f5e732c291.png)
 

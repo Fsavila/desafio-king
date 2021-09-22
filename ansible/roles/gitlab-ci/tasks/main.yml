@@ -1,24 +1,20 @@
-  stages:
-  - build
-  - test
-  - deploy
-
-  build:
+stages:
+    name: build-job
     stage: build
     script:
-        - mv ../ansible/hosts ../ansible/hosts_old
-        - echo "[webserves]" >> ../ansible/hosts
-        - chmod +x install_requirements.sh
-        - ./install_requirements.sh
+      - rm ../ansible/hosts
+      - echo "[webserves]" >> ../ansible/hosts
+      - chmod +x install_requirements.sh
+      - ./install_requirements.sh
 
-  test:
+    name: test-job
     stage: test
     script:
-        - chmod +x validate_requirements.sh
-        - ./validate_requirements.sh
+      - chmod +x validate_requirements.sh
+      - ./validate_requirements.sh
 
-  deploy:
+    name: deploy-prod
     stage: deploy
     script:
-        - chmod +x start.sh
-        - ./start.sh
+      - chmod +x start.sh
+      - ./start.sh

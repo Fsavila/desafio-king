@@ -33,7 +33,7 @@ OBS: Se atente aos comentários dos arquivos, em cada um deles existem explicaç
 
 
 - Com sua conta GCP criada, faça a criação de um novo Projeto.
-- Na barra de pesquisa procure por "Contas e Serviços". Crie uma conta de serviço para esse projeto delegando o Papel de Adminstrador.
+- Na barra de pesquisa procure por "Contas e Serviços". Crie uma conta de serviço para esse projeto delegando o Papel de Prjeto > Proprietario.
 - Gere a chave no tipo JSON para a conta e substitua o conteúdo do codigo-acesso-gcp.json pelo gerado no painel do gcp.
 ![image](https://user-images.githubusercontent.com/54381653/134224104-9649e06e-5fd4-43e5-9042-6e2251f6326a.png)
 - Adicione o ID do seu projeto no arquivo variables.tf ![image](https://user-images.githubusercontent.com/54381653/134226145-250fb684-c5dc-4d72-9279-a73b62a0b9ca.png)

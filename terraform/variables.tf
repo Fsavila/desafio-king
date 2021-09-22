@@ -1,5 +1,5 @@
 variable "project" {
-  default = "desafioking"
+  default = "idProjeto"  # Alterar para o ID do seu Projeto no GCP
 }
 
 variable "region" {
@@ -22,8 +22,12 @@ variable "image_os" {
     default = "centos-7"  
 }
 
+variable "ssh_user" {
+  default = "usuario" # Alterar para o seu Usuário
+}
+
 variable "ssh_key" {
-  default = "/home/bruno/.ssh/id_rsa.pub"
+  default = "caminhoCompleto/id_rsa.pub" # Alterar com o caminho da sua chave pública ssh 
 } 
 
 variable "ports" {

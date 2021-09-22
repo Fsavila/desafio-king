@@ -16,7 +16,7 @@ resource "google_compute_instance" "webserver" {
     }
 
     metadata = {
-      "sshkeys" = "bruno:${file(var.ssh_key)}"
+      "sshkeys" = "${var.ssh_user}:${file(var.ssh_key)}"
 
     }   
 

@@ -29,5 +29,5 @@ else
 fi
 
 echo ""
-echo "Parabéns, seu computador possui os requisitos técnicos, execute o comando: ./start.sh"
+echo "Parabéns, seu computador possui os requisitos técnicos"
 sleep 3

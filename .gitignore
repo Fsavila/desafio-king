@@ -9,6 +9,3 @@ terraform.lock.hcl
 **/.hosts
 # Credenciais GCP
 credentials.json
-
-
-

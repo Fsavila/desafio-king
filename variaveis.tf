@@ -1,6 +1,6 @@
 # Nome do ID projeto criado no painel do GCP
 variable "idProjeto" {
-  default = "projeto-infra-326302"
+  default = "IDPROJETOGCP"
 }
 
 # Região e zona da instancia que vai ser criada, existe uma lista no GCP para consulta.

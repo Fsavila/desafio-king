@@ -27,11 +27,11 @@ você irá encontrar o arquivo responsável pela execução de toda a infraestru
 
 ### Tomada de Decisões
 
-# Print Kanban #
+<img src = "https://github.com/bramos013/desafio-king/blob/main/images/kanban.png" width = "50px" />
 
 Primeiramente decidi utilizar um Kanban para a elaboração do plano de execução do projeto, visto que não detinha conhecimento de algumas tecnologias, evitar riscos em falhas nos processos e também ter um melhor controle no prazo de entrega. Assim que realizado o planejamento avancei na escolhas das tecnologias e ferramentas a utilizar. Nesse momento tive alguns impasses na escolha do provisionador, no inicio pensei em utilizar o SaltStack no qual atualmente é utilizado na KingHost, porém estudando o seu funcionamento optei por não utilizar pois verifiquei que ele é uma plataforma mais complexa, com uma documentação não tão sólida comparada a outras opções de mercado. Também como se trata de um projeto com curto prazo de entrega, optei por ferramentas mais consolidadas, documentação sólida e com uma baixa curva de aprendizado.
 
-
+<img src = "https://github.com/bramos013/desafio-king/blob/main/images/gitlab.png" width = "50px" />
 
 
 

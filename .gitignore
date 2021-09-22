@@ -6,7 +6,7 @@ terraform.lock.hcl
 *.tfstate
 *.tfstate.*
 *.tfvars
-
+**/.hosts
 # Credenciais GCP
 credentials.json
 

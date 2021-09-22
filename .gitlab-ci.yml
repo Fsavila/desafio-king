@@ -1,0 +1,64 @@
+
+stages:          
+  - build
+  - test
+  - deploy
+
+build-estrutura:       
+  stage: build
+  script:
+    - whoami
+    - sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+    - curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    - sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    - sudo apt-get update && sudo apt-get install terraform -y
+    - sudo apt install ansible -y
+    - sudo apt install unzip
+    
+
+unit-test-estrutura:  
+  stage: test   
+  script:
+    - terraform --version
+    - ansible --version
+    - ssh-keygen -f ~/.ssh/id_rsa -q -N ""
+    - pwd
+    - wget https://github.com/anderdg/project-king/archive/refs/heads/master.zip
+    - unzip master.zip
+    - cd project-king-master
+    - echo "$ACESSO_KEY_GCP"
+    - echo $REGISTRATION_KEY
+    - echo "$ACESSO_KEY_GCP" > codigo-acesso-gcp.json
+    - NOME=$((1 + RANDOM % 100))
+    - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
+    - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
+
+    - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
+    - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
+    - sed -i 's/read "" 0//g' ./init-deploy.sh
+    - cat ./ansible/gitlab-runner.yml
+    - cat variaveis.tf
+
+lint-test-prepara-deploy:   
+  stage: test    
+  script:
+  
+    - sleep 10
+    - echo "Nenhuma dificuldade encontrada... Tacale pau nesse carinho!"
+
+deploy-job:      
+  stage: deploy 
+  script:
+    - wget https://github.com/anderdg/project-king/archive/refs/heads/master.zip
+    - unzip master.zip
+    - cd project-king-master
+    - echo "$ACESSO_KEY_GCP" > codigo-acesso-gcp.json
+    - NOME=$((1 + RANDOM % 100))
+    - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
+    - sed -i 's/anderson/gitlab-runner/g' ./main.tf
+    - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
+    - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
+    - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
+    - sed -i 's/read "" 0//g' ./init-deploy.sh
+    - ./init-deploy.sh
+

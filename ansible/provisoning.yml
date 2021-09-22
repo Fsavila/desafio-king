@@ -1,0 +1,58 @@
+---
+- hosts: vminfra
+  tasks:
+    
+    - name: "instala o nginx para fazer proxy externo com os containers"
+      yum:
+        name: nginx
+        state: latest
+      become: yes
+
+    - name: "Configura NGINX com BOOT"
+      shell: "sudo systemctl start nginx; sudo systemctl enable nginx"
+      become: yes        
+
+    - name: "Instalando docker..."
+      yum:
+        name: docker
+        state: latest
+      become: yes
+
+    - name: "Configura lib faltante para funcionamento do Docker"
+      yum:
+        name: python-docker
+        state: latest
+      become: yes  
+
+    - name: "Configura o Docker com BOOT"
+      shell: "sudo systemctl start docker; sudo systemctl enable docker"
+      become: yes  
+      
+    - name: "Cria container com docker gitlab-CE"
+      docker_container:
+        name: gitlab-ce
+        image: gitlab/gitlab-ce
+        volumes: 
+        - /etc/gitlab
+        - /var/log/gitlab 
+        - /var/opt/gitlab         
+        ports: 
+        - "8080:80"  
+      become: yes
+
+    - name: "Cria container com Docker gitlab-RUNNER"
+      docker_container:
+        name: gitlab-runner
+        privileged: yes
+        image: gitlab/gitlab-runner
+        links: 
+        -  gitlab-ce:gitlab-ce
+        volumes: 
+        - /var/log/gitlab-runner
+        - /etc/gitlab-runner
+        - /var/run/docker.sock:/var/run/docker.sock            
+        ports: 
+        - "8888:80"
+      become: yes
+
+

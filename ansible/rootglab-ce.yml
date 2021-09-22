@@ -1,0 +1,6 @@
+---
+- hosts: vminfra
+  tasks:
+    - name: "Busca senha ROOT gitlab"
+      shell: "sudo docker exec gitlab-ce cat /etc/gitlab/initial_root_password"
+      become: yes

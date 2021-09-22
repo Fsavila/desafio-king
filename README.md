@@ -8,6 +8,8 @@ O projeto terá 2 containers para melhor uso das ferramentas listadas a baixo, o
 
 Separei cada arquivo para que ficasse de melhor entendimento durante o processo. Inclusive adicionei um script para que execute todos os passos de forma segura sem erros, isso trará melhor confiabilidade na hora da execução (e  também para iniciar o processo no gitlab.)
 
+Foram utilizados servidores com 2 nucleos de CPU e 8Gb de ram para atender a demanda dos dockers.
+
 
 ## Quais ferramentas foram utlizadas e porque o uso destas?
 

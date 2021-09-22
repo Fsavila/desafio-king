@@ -35,7 +35,7 @@ unit-test-estrutura:
 
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
-    - sed -i 's/read -p "" 0//g' ./init-deploy.sh
+    - sed -i 's/read -p "" vazio//g' ./init-deploy.sh
     - cat ./ansible/gitlab-runner.yml
     - cat variaveis.tf
 
@@ -59,6 +59,6 @@ deploy-job:
     - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
-    - sed -i 's/read "" 0//g' ./init-deploy.sh
+    - sed -i 's/read -p "" vazio//g' ./init-deploy.sh
     - ./init-deploy.sh
 

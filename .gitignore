@@ -1,0 +1,14 @@
+# Diretórios locais 
+**/.terraform /*
+
+# Arquivos
+terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Credenciais GCP
+credentials.json
+
+
+

@@ -7,7 +7,7 @@ read escolha
 if [ $escolha == S ]
 then
     echo 'Desmontando Infraestrutura'
-    terraform destroy --auto-approve ; echo [webserver] > ../ansible/hosts    terraform destroy --auto-approve ; echo [webserver] > ../ansible/hosts
+    terraform destroy --auto-approve ; echo [webserver] > ../ansible/hosts
 exit 3
 
 else

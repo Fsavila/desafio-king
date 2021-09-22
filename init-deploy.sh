@@ -38,8 +38,8 @@ echo ""
 echo "Gitlab-ce estará disponivel na porta IPDAINSTANCIA:8080"
 
 echo "LEMBRE DE TERMINAR OS PASSO 8 ANTES DE CONTINUAR" 
-
-echo "Aperte qualquer tecla para continuar"
+echo ""
+echo "Aperte avtecla enter para continuar"
 read -p "" vazio
 
 ansible-playbook ./ansible/permissions.yml -i hosts

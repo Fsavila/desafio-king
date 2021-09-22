@@ -37,7 +37,7 @@ ansible-playbook ./ansible/rootglab-ce.yml -i hosts -v | grep -oe "Password:....
 echo ""
 echo "Gitlab-ce estará disponivel na porta IPDAINSTANCIA:8080"
 
-echo "LEMBRE DE TERMINAR OS PASSO 8 ANTES DE CONTINUAR" 
+echo -e "\033[05;41mLEMBRE DE TERMINAR OS PASSO 8 ANTES DE CONTINUAR\033[00;37m" 
 echo ""
 echo "Aperte a tecla enter para continuar"
 read -p "" vazio

@@ -4,6 +4,10 @@ O projeto tem a lição de mostrar que é possível fazer uma infra totalmente p
 
 Todos os recursos usados foram baseados na percepção de melhor estratégia para o desafio e pensando em expandir não apenas ao que foi pedido mas que com uma pequena mudança pode atender outras features.
 
+O projeto terá 2 containers para melhor uso das ferramentas listadas a baixo, optei por fazer desta forma pois o duckerhub possuí as imagens já prontas para o que eu necessito. Afinal já foi o tempo de instalar tudo na mão não é mesmo?
+
+Separei cada arquivo para que ficasse de melhor entendimento durante o processo. Inclusive adicionei um script para que execute todos os passos de forma segura sem erros, isso trará melhor confiabilidade na hora da execução (e  também para iniciar o processo no gitlab.)
+
 
 ## Quais ferramentas foram utlizadas e porque o uso destas?
 

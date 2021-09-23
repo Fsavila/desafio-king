@@ -27,8 +27,7 @@ Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, 
 
 
 
-![image](https://user-images.githubusercontent.com/54381653/134440709-73b85247-ab86-438e-a91a-810085a8dea5.png)
-
+![image](https://user-images.githubusercontent.com/54381653/134442483-dbb18943-78f6-4bc9-93a2-bb8aed161403.png)
 
 
 ## Quais ferramentas foram utlizadas e porque o uso destas?

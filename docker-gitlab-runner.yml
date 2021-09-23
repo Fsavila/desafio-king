@@ -1,0 +1,29 @@
+---
+  
+- name: Gitlab runner register
+  hosts: all:!localhost
+  become: true
+  vars_prompt:
+
+  - name: url
+    prompt: Enter gitlab url
+    private: no
+    
+  - name: token
+    prompt: Enter gitlab registration token
+    private: no
+
+  - name: name
+    prompt: Enter gitlab runner name
+    private: no    
+
+  tasks:
+
+  - name: Register runner
+    shell: docker exec gitlab-runner gitlab-runner register \
+           --non-interactive \
+           --name "{{name}}" \
+           --url "{{ url }}" \
+           --registration-token "{{ token }}" \
+           --clone-url "{{ url }}" \
+           --executor shell

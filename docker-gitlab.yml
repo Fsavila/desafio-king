@@ -1,0 +1,145 @@
+---
+
+- name: Gitlab install
+  hosts: all:!localhost
+  become: true
+
+  tasks:  
+
+  - name: Prepare for docker use
+    block:
+
+    - name: Disable selinux
+      shell:
+        cmd: sed -i 's/enforcing/disabled/g' /etc/selinux/config
+        executable: /bin/bash    
+
+    - name: Add repository
+      shell:
+        cmd: yum install -y yum-utils && yum-config-manager --add-repo 'https://download.docker.com/linux/centos/docker-ce.repo'
+        executable: /bin/bash
+        warn: false
+    
+    - name: Install needed packages through yum
+      shell:
+        cmd: yum install -y docker-ce docker-ce-cli containerd.io docker-compose libselinux-python libselinux-python3
+        executable: /bin/bash
+        warn: false
+
+    - name: Install docker SDK for python, needed by ansible
+      pip:
+        name: 
+          - docker
+        executable: pip3
+    
+    - name: Enable and start docker
+      service:
+        name: docker
+        enabled: yes
+        masked: no
+        state: started
+
+  - name: Prepare gitlab storage
+    block:
+        
+    - name: Creates the filesystem into storage device
+      filesystem:
+        fstype: ext4
+        dev: /dev/disk/by-id/google-gitlab_storage
+
+    - name: Create gitlab root folder
+      shell:
+        cmd: mkdir -p /gitlab/
+        executable: /bin/bash
+
+
+  - name: Prepare gitlab env
+    block:
+
+    - name: Mount Gitlab storage device
+      mount:
+        path: /gitlab
+        src: /dev/disk/by-id/google-gitlab_storage
+        fstype: ext4
+        state: mounted
+
+    - name: Create gitlab folders in the volume
+      shell:
+        cmd: mkdir -p /gitlab/config /gitlab/logs /gitlab/data /gitlab/runner/config
+        executable: /bin/bash
+    
+    - name: Copy docker-compose file into the machine
+      copy:
+        src: files/docker-compose.yml
+        dest: /gitlab
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+  - name: Stop/start container
+    block:
+    
+    - name: Destroy existing gitlab container
+      docker_compose:
+        project_src: /gitlab
+        state: absent
+        remove_volumes: no
+
+    - name: Start gitlab
+      docker_compose:
+        project_src: /gitlab
+        state: present
+
+    - name: Wait for gitlab initial conf
+      wait_for:
+        path: /gitlab/config/initial_root_password
+    
+    - name: Get gitlab initial root password
+      shell: 
+        cmd: docker exec gitlab_web_1 grep 'Password:' /etc/gitlab/initial_root_password
+        executable: /bin/bash
+      register: command_output
+
+    - debug:
+        var: command_output.stdout_lines
+    
+    - name: Destroy gitlab runner
+      docker_container:
+        name: gitlab-runner
+        state: absent
+    
+    - name: Start gitlab runner
+      shell:
+        cmd: docker run -d --name gitlab-runner --restart always --env TZ='America/Sao_Paulo' -v /gitlab/runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+        executable: /bin/bash
+
+    - name: Copy terraform install script into docker volume
+      copy:
+        src: files/install-pipeline-req.sh
+        dest: /gitlab/runner/config
+        owner: root
+        group: root
+        mode: '0744'
+        backup: yes
+
+    - name: Copy credentials into runner
+      copy:
+        src: credentials.json
+        dest: /gitlab/runner/config
+        owner: root
+        group: root
+        mode: '0740'
+      ignore_errors: yes
+    
+    - name: Adjust credentials.json group
+      shell: 
+        cmd: docker exec gitlab-runner chown root:gitlab-runner /etc/gitlab-runner/credentials.json
+        executable: /bin/bash
+      ignore_errors: yes
+
+    - name: Install pipeline requirements
+      shell: 
+        cmd: docker exec gitlab-runner /etc/gitlab-runner/install-pipeline-req.sh
+        executable: /bin/bash
+      

@@ -82,7 +82,7 @@ Crie essas 4 variaveis no CI/CD contendo somente os seguintes conteúdos:
 - **ACESSO_KEY_GCP: conteúdo do json do arquivo codigo-acesso-gcp.json**
 - **REGISTRATION_KEY: A key de acesso ao Runner (Do RUNNER do projeto, não do runner global)**
 - **URL_RUNNER: O ip do gitlab sendo assim o value ficará apenas com IPDOSERVIDOR:8080**
-- **ID_PROJECT_GPC: contendo o nome do seu idPorojeto do projeto criado no painel do GCP**
+- **ID_PROJECT_GCP: contendo o nome do seu idPorojeto do projeto criado no painel do GCP**
 
 
 Após cadastrar as variaveis basta voltar no editor, e clicar em commit changes.

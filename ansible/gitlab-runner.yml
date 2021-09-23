@@ -1,0 +1,15 @@
+---
+- hosts: vminfra
+  tasks:
+    - name: "Registry Git-Runner"
+      shell: sudo docker exec gitlab-runner gitlab-runner register \
+                   --non-interactive \
+                   --url "http://$URL" \
+                   --registration-token "$TOKENREG" \
+                   --executor "shell" \
+                   --description "shell-using" \
+                   --clone-url "http://$URL" \
+                   --run-untagged="true" \
+                   --locked="false" \
+                   --access-level="not_protected"
+      become: yes             

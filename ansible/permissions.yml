@@ -1,0 +1,19 @@
+---
+- hosts: vminfra
+  tasks:
+    - name: "Ajusta Sudo Gitlab-Runners"
+      shell: "sudo docker exec gitlab-runner apt update"
+      become: yes
+
+    - name: "2° etapa Sudo"
+      shell: "sudo docker exec gitlab-runner apt install sudo -y"
+      become: yes      
+
+    - name: "Insere permissão e Grupo para o usuario gitlab-runner"
+      shell: "sudo docker exec gitlab-runner usermod -a -G sudo gitlab-runner"
+      become: yes      
+
+    - name: "Configura Sudoers"
+      shell: "sudo docker exec gitlab-runner sed -i 's/ALL=(ALL:ALL) ALL/ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers"
+      become: yes
+

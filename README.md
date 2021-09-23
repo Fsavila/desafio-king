@@ -18,7 +18,7 @@ Como podem ver no fluxo grama localmente geramos a primeira instancia que contem
 
 1 Gitlab CI/CD que irá gerar as pipelines e 1 Container Runner que irá executar o projeto, e refazer o deploy do projeto novamente e assim de dentro do runner gerando mais 1 instancia de vm com mais 2 dockers contendo a mesma estrutura da instancia inciial.
 
-**OBS: Aqui vocês vao notar que apenas o gitlab "pai", é quem vai ser usado e todos os runners filhos vão ser dependentes deste gitlab "pai" sendo assim  toda pipeline executada dentro desse gitlab "pai" irá repassar aos runners filhos, netos, bisnetos e assim sucessivamente  e em quantos servidores eu criar.**
+**OBS: Aqui vocês vao notar que apenas o gitlab "pai" é quem vai ser usado. Todos os runners filhos vão ser dependentes deste gitlab "pai", sendo assim  toda pipeline executada dentro desse gitlab "pai" irá repassar aos runners filhos, netos, bisnetos e assim sucessivamente  e em quantos servidores eu criar.**
 
 Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, tirando o gitlab pai o resto destes gitlabs todos poderiam ser decartados mas mantive para mostrar que o processo continuo e ilimitado até acabar os recursos do teu provedor.
 

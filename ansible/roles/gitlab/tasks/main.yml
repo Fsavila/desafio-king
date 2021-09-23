@@ -1,0 +1,27 @@
+- name: Iniciando Container Gitlab
+  docker_container:
+    name: gitlab
+    image: gitlab/gitlab-ce
+    state: started
+    restart_policy: always
+    ports:
+      - "5000:80"
+    volumes:
+      - "/srv/gitlab/config:/etc/gitlab"
+      - "/srv/gitlab/logs:/var/log/gitlab"
+      - "/srv/gitlab/data:/var/opt/gitlab"
+
+- name: Iniciando Container Gitlab Runner
+  docker_container:
+    name: gitlab_runner
+    image: gitlab/gitlab-runner
+    state: started
+    restart_policy: always
+    ports:
+      - "5050:80"
+      - "5055:443"
+    volumes:
+      - "/srv/gitlab-runner/config:/etc/gitlab"
+      - "/srv/gitlab-runner/logs:/var/log/gitlab-runner"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+

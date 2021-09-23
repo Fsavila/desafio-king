@@ -1,0 +1,17 @@
+- name: Selinux Permissive
+  become: true
+  shell:
+    cmd: sed -ri 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config ; setenforce 0 
+    executable: /bin/sh
+
+- name: Instalando Pacotes Necessários 
+  become: true
+  yum:
+    name: 
+      - nginx
+      - docker 
+      - python-docker  
+
+
+
+

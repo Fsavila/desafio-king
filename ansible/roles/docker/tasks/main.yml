@@ -1,0 +1,6 @@
+- name: Iniciando Docker
+  become: true
+  shell: 
+    cmd: systemctl start docker ; systemctl enable docker
+    executable: /bin/sh
+

@@ -1,0 +1,20 @@
+stages:
+    name: build-job
+    stage: build
+    script:
+      - rm ../ansible/hosts
+      - echo "[webserves]" >> ../ansible/hosts
+      - chmod +x install_requirements.sh
+      - ./install_requirements.sh
+
+    name: test-job
+    stage: test
+    script:
+      - chmod +x validate_requirements.sh
+      - ./validate_requirements.sh
+
+    name: deploy-prod
+    stage: deploy
+    script:
+      - chmod +x start.sh
+      - ./start.sh

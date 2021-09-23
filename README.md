@@ -14,13 +14,18 @@ OBS: Se atente aos comentários dos arquivos, em cada um deles existem explicaç
 
 ## Estrutura do Projeto:
 
-Como podem ver no fluxo grama localmente geramos a primeira instancia que contem 2 containeirs.
+Como podem ver no fluxograma localmente, rodamos apenas uma unica vez o script e assim  geramos a primeira instancia que contem 2 containeirs.
 
 1 Gitlab CI/CD que irá gerar as pipelines e 1 Container Runner que irá executar o projeto, e refazer o deploy do projeto novamente e assim de dentro do runner gerando mais 1 instancia de vm com mais 2 dockers contendo a mesma estrutura da instancia inciial.
 
 **OBS: Aqui vocês vao notar que apenas o gitlab "pai" é quem vai ser usado. Todos os runners filhos vão ser dependentes deste gitlab "pai", sendo assim  toda pipeline executada dentro desse gitlab "pai" irá repassar aos runners filhos, netos, bisnetos e assim sucessivamente  e em quantos servidores eu criar.**
 
 Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, tirando o gitlab pai o resto destes gitlabs todos poderiam ser decartados mas mantive para mostrar que o processo continuo e ilimitado até acabar os recursos do teu provedor.
+
+**Sendo assim após a primeira instancia criada com o script e os deploy ter sido concluido todas as outras instancias podem ser geradas exclusivamente pelo gitlab progenitor sem ter que executar qualqur script localmente.**
+
+
+
 
 ![image](https://user-images.githubusercontent.com/54381653/134440709-73b85247-ab86-438e-a91a-810085a8dea5.png)
 

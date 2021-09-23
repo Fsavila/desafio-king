@@ -27,8 +27,7 @@ Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, 
 
 
 
-![image](https://user-images.githubusercontent.com/54381653/134442921-ec9111cc-55f1-45d0-9407-e1d0ca065c7d.png)
-
+![image](https://user-images.githubusercontent.com/54381653/134443653-d72ab993-215a-46d5-a90e-cd3292c5e157.png)
 ## Quais ferramentas foram utlizadas e porque o uso destas?
 
 **° Terraforms**: Dentre todos os gerenciadores para criação de instancias o terraforms foi o mais amigavel e de facil utilização. O que mais me motivou em usar ele foi a vasta documentação que possúi e a comunidade ser ativa tendo assim respostas para muitas das duvidas que tive dentro do processo alem de ser uma ferramenta muito simples e de facil entendimento.

@@ -23,16 +23,18 @@ unit-test-estrutura:
     - ansible --version
     - ssh-keygen -f ~/.ssh/id_rsa -q -N ""
     - pwd
-    - wget https://github.com/anderdg/project-king/archive/refs/heads/master.zip
-    - unzip master.zip
-    - cd project-king-master
+    - wget https://github.com/anderdg/desafio-king/archive/refs/heads/main.zip
+    - unzip main.zip
+    - cd desafio-king-main
     - echo "$ACESSO_KEY_GCP"
     - echo $REGISTRATION_KEY
     - echo "$ACESSO_KEY_GCP" > codigo-acesso-gcp.json
     - NOME=$((1 + RANDOM % 100))
     - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
     - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
-    - sed -i 's/idProjetoGCP/COLOQUEONOMEDOSEUPROJETOAQUI/g' ./variaveis.tf
+    
+    - sed -i 's/IDPROJETOGCP/COLOQUEONOMEDOSEUPROJETOAQUI/g' ./variaveis.tf
+    
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/read -p "" vazio//g' ./init-deploy.sh
@@ -49,15 +51,17 @@ lint-test-prepara-deploy:
 deploy-job:      
   stage: deploy 
   script:
-    - wget https://github.com/anderdg/project-king/archive/refs/heads/master.zip
-    - unzip master.zip
-    - cd project-king-master
+    - wget https://github.com/anderdg/desafio-king/archive/refs/heads/main.zip
+    - unzip main.zip
+    - cd desafio-king-main
     - echo "$ACESSO_KEY_GCP" > codigo-acesso-gcp.json
     - NOME=$((1 + RANDOM % 100))
     - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
     - sed -i 's/anderson/gitlab-runner/g' ./main.tf
     - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
-    - sed -i 's/idProjetoGCP/COLOQUEONOMEDOSEUPROJETOAQUIGCP/g' ./variaveis.tf
+    
+    - sed -i 's/IDPROJETOGCP/COLOQUEONOMEDOSEUPROJETOAQUIGCP/g' ./variaveis.tf
+    
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/read -p "" vazio//g' ./init-deploy.sh

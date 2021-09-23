@@ -12,6 +12,19 @@ Foram utilizados servidores com 2 nucleos de CPU e 8Gb de ram para atender a dem
 
 OBS: Se atente aos comentários dos arquivos, em cada um deles existem explicações claras sobre o que cada parte faz e porque foram utilizadas daquela maneira.
 
+## Estrutura do Projeto:
+
+Como podem ver no fluxo grama localmente geramos a primeira instancia que contem 2 containeirs.
+
+1- 1 Gitlab CI/CD que irá gerar as pipelines e 1 Container Runner que irá executar o projeto e refazer o deploy do projeto novamente e assim de dentro do runner gerando mais 1 instancia de vm com mais 2 dockers contendo a mesma estrutura da instancia inciial.
+
+OBS: Aqui vocês vao notar que apenas o gitlab "pai" é quem vai ser usado e todos os runners filhos vão ser dependentes deste gitlab "pai" sendo assim  toda pipe line executada dentro desse gitlab "pai" irá repassar aos runners filhos, netos, bisnetos e assim sucessivamente  e em quantos servidores eu cirar.
+
+Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, tirando o gitlab pai o resto destes gitlabs todos poderiam ser decartados mas mantive para mostrar que o processo continuo e ilimitado até a cabar os recursos do teu provedor.
+
+![image](https://user-images.githubusercontent.com/54381653/134440709-73b85247-ab86-438e-a91a-810085a8dea5.png)
+
+
 
 ## Quais ferramentas foram utlizadas e porque o uso destas?
 

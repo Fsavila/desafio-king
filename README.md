@@ -70,19 +70,27 @@ Os outros gitlabs CI/CD só existem porque fazem parte de criação do projeto, 
  7) Com estes dados será necessário cadastrar o Runner para que o gitlab execute os scripts no novo ambiente.
  8) No arquivo gitlab-runner.yml troque as informações como URL e registration token que estão destacadas com os nomes $URL E $TOKENREG. --url --clone-url --registration-token
  9) **Pronto agora pode clicar em qualquer tecla que ele vai terminar de depoylar por completo. A estrutura nesse momento se encontra toda pronta.**
- 10) Para finalizar o Projeto agora iremos copiar o nosso arquivo gitlab-ci.yml la no editor de criação de pipeline do CI/CD altere as linhas 36 e 63 aonde contem um sed. No valor **COLOQUEONOMEDOSEUPROJETOAQUI** coloque seu id do projeto do painel gcp.
+ 10) Para finalizar o Projeto agora iremos copiar o nosso arquivo gitlab-ci.yml la no editor de criação de pipeline do CI/CD. Cole a pipeline desenvolvida la.
 
  **OBS:**
  
- ![image](https://user-images.githubusercontent.com/54381653/134264897-cf36b2b1-9a3b-41bb-9545-c0f5e732c291.png)
+ ![image](https://user-images.githubusercontent.com/54381653/134449446-ab18c3b4-78f1-4e2e-a875-e0e2eecb1f8f.png)
 
-Crie essas 3 variaveis no CI/CD contendo somente os seguintes conteúdos:
 
-- ACESSO_KEY_GCP: conteúdo do json do arquivo codigo-acesso-gcp.json
-- REGISTRATION_KEY: A key de acesso ao Runner (Do RUNNER do projeto, não do runner global)
-- URL_RUNNER: O ip do gitlab sendo assim o value ficará apenas com IPDOSERVIDOR:8080
+Crie essas 4 variaveis no CI/CD contendo somente os seguintes conteúdos:
 
-FEITO TUDO RUNPIPELINE E ABRAÇO!
+- **ACESSO_KEY_GCP: conteúdo do json do arquivo codigo-acesso-gcp.json**
+- **REGISTRATION_KEY: A key de acesso ao Runner (Do RUNNER do projeto, não do runner global)**
+- **URL_RUNNER: O ip do gitlab sendo assim o value ficará apenas com IPDOSERVIDOR:8080**
+- **ID_PROJECT_GPC: contendo o nome do seu idPorojeto do projeto criado no painel do GCP**
+
+
+Após cadastrar as variaveis basta voltar no editor, e clicar em commit changes.
+Pronto! 
+
+Uma nova isntancia será criada automaticamente sempre que você rodar uma nova pipeline, lembrando que cada instancia possui um runner cadastrado interligado com este gestor de codigo no caso o gitlab aonde tu executou a pipeline. sendo assim qualquer escript que for executa nesse gitlab será repassado a todos os runners criados a partir deste código de deploy.
+
+
 Concluído!
 
 

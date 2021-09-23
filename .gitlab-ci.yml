@@ -32,7 +32,7 @@ unit-test-estrutura:
     - NOME=$((1 + RANDOM % 100))
     - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
     - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
-
+    - sed -i 's/idProjetoGCP/COLOQUEONOMEDOSEUPROJETOAQUI/g' ./variaveis.tf
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/read -p "" vazio//g' ./init-deploy.sh
@@ -57,6 +57,7 @@ deploy-job:
     - sed -i 's/web10/'web${NOME}'/g' ./variaveis.tf
     - sed -i 's/anderson/gitlab-runner/g' ./main.tf
     - sed -i 's/firewall-instancias/'firewall-instancia${NOME}'/g' ./variaveis.tf
+    - sed -i 's/idProjetoGCP/COLOQUEONOMEDOSEUPROJETOAQUIGCP/g' ./variaveis.tf
     - sed -i 's/$URL/'${URL_RUNNER}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/$TOKENREG/'${REGISTRATION_KEY}'/g' ./ansible/gitlab-runner.yml
     - sed -i 's/read -p "" vazio//g' ./init-deploy.sh
